@@ -5,6 +5,13 @@ print_and_exec() {
     eval "$@"
 }
 
+invoke_modtools() {
+    echo "> $MOD_TOOLS $@"
+    echo -en "\e[34m"
+    eval ${MOD_TOOLS} "$@" | sed -e 's/^/ModTools: /;'
+    echo -en "\e[0m"
+}
+
 build_locale() {
     local locale=$1
     local platform=$2
@@ -15,17 +22,15 @@ build_locale() {
         local manifest="assetbundle.${locale}.manifest"
     fi
 
-    echo "Using platform ${platform}"
-    echo "Using locale ${locale}"
-    echo "Using manifest name ${manifest}"
+    echo "Starting build for ${platform} / ${locale} / ${manifest}"
 
     local output_dir=./build/${platform}
     local output_file=${output_dir}/${locale}_master
     mkdir -p ${output_dir}
 
     # Apply mods
-    print_and_exec ${MOD_TOOLS} import-multiple ./source/${platform}/${locale}_master ./dictionaries ${output_file}
-    print_and_exec ${MOD_TOOLS} import ${output_file} TextLabel ./textlabel/${locale}.json --inplace
+    invoke_modtools import-multiple ./source/${platform}/${locale}_master ./dictionaries ${output_file}
+    invoke_modtools import ${output_file} TextLabel ./textlabel/${locale}.json --inplace
 
     # Rename with hash and move
     local hash=$($MOD_TOOLS hash $output_file)
@@ -35,9 +40,9 @@ build_locale() {
     output_file="${new_output_dir}/${hash}"
 
     # Update manifest
-    print_and_exec ${MOD_TOOLS} manifest ./source/${platform}/${manifest} ${output_file} ${output_dir}/${manifest}
+    invoke_modtools manifest ./source/${platform}/${manifest} ${output_file} ${output_dir}/${manifest}
 
-    echo "Build complete\n\n"
+    echo -e "Build complete\n"
 }
 
 build_locale "ja_jp" "android"
