@@ -8,7 +8,12 @@ print_and_exec() {
 invoke_modtools() {
     echo "> $MOD_TOOLS $@"
     echo -en "\e[34m"
-    eval ${MOD_TOOLS} "$@" | sed -e 's/^/ModTools: /;'
+    if ! eval ${MOD_TOOLS} "$@" | sed -e 's/^/ModTools: /;'; then
+        echo -en "\e[31m"
+        echo ModTools invocation failed.
+        exit 1
+    fi
+
     echo -en "\e[0m"
 }
 
