@@ -50,6 +50,15 @@ build_locale() {
     echo -e "Build complete\n"
 }
 
-build_locale "ja_jp" "android"
-build_locale "en_us" "android"
-build_locale "en_eu" "android"
+locales=(
+    "ja_jp"
+    "en_us"
+    "en_eu"
+    "zh_cn"
+    "zh_tw"
+)
+
+for locale in ${locales[@]}; do
+    build_locale ${locale} "android"
+    build_locale ${locale} "ios"
+done
