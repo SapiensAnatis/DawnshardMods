@@ -1,4 +1,4 @@
-MOD_TOOLS=/home/jay/DragaliaModTools/ModTools/bin/Debug/net6.0/ModTools
+MOD_TOOLS=/home/jay/DragaliaModTools/ModTools/bin/Release/net6.0/ModTools
 
 print_and_exec() {
     echo "> $@"
