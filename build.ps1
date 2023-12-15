@@ -1,7 +1,9 @@
-$ModToolsPath = "D:\Documents\Programming\dragalia\DragaliaModTools\ModTools\bin\Release\net6.0\ModTools.exe"
-
 # General build options
-$Locales = "ja_jp", "en_us", "en_eu", "zh_cn", "zh_tw"
+$ModToolsPath = "D:\Documents\Programming\dragalia\DragaliaModTools\ModTools\bin\Release\net6.0\ModTools.exe"
+#$Locales = "ja_jp", "en_us", "en_eu", "zh_cn", "zh_tw"
+#$Locales = "zh_cn", "zh_tw"
+#$Locales = "ja_jp", "en_us"
+$Locales = "en_us"
 $Platforms = "iOS", "Android"
 
 # Merge options
@@ -41,7 +43,7 @@ function Get-OutputDir {
         [string] $Platform
     )
 
-    $outputDir = Join-Path "build" $Platform
+    $outputDir = Join-Path $pwd "build" $Platform
     $dir = New-Item -Path $outputDir -ItemType Directory -Force
     
     $dir.FullName
@@ -59,8 +61,8 @@ function Invoke-ModTools {
     & $ModToolsPath @MyArgs
    
     if ($LASTEXITCODE) {
-        Write-Error "ModTools invocation failed: $LASTEXITCODE"
-        Exit-PSHostProcess 1
+        Write-Error "ModTools invocation failed with exit code $LASTEXITCODE"
+        exit 1
     }
 }
 
@@ -111,7 +113,14 @@ function Merge-Manifest {
     $inputManifest = Join-Path $outputDir $manifestName
     $outputManifest = Join-Path $ManifestToMerge $manifestName
 
-    Invoke-Modtools "manifest" "merge" $inputManifest $outputManifest $SrcAssetDir $outputDir
+    if ($Platform -eq "iOS") {
+        Invoke-Modtools "manifest" "merge" $inputManifest $outputManifest $SrcAssetDir $outputDir "--convert"
+    }
+    else {
+        Invoke-Modtools "manifest" "merge" $inputManifest $outputManifest $SrcAssetDir $outputDir
+    }
+
+    
 }
 
 foreach ($locale in $Locales) {
@@ -119,7 +128,9 @@ foreach ($locale in $Locales) {
         Write-Title "Starting build for $locale / $platform"
 
         Build-Locale $locale $platform
-        Merge-Manifest $locale $platform
+        if ($ManifestToMerge) {
+            Merge-Manifest $locale $platform
+        }
 
         Write-Title "Build complete"
     }
