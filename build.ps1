@@ -1,14 +1,15 @@
 # General build options
 $ModToolsPath = "D:\Documents\Programming\dragalia\DragaliaModTools\ModTools\bin\Release\net6.0\ModTools.exe"
-#$Locales = "ja_jp", "en_us", "en_eu", "zh_cn", "zh_tw"
+$Locales = "ja_jp", "en_us", "en_eu", "zh_cn", "zh_tw"
 #$Locales = "zh_cn", "zh_tw"
 #$Locales = "ja_jp", "en_us"
-$Locales = "en_us"
+#$Locales = "en_us"
 $Platforms = "iOS", "Android"
 
 # Merge options
 $ManifestToMerge = "D:\DragaliaLost Assets\EU_locale\manifest\h6lObp9eiVabAdyO"
 $SrcAssetDir = "D:\DragaliaLost Assets\EU_locale"
+$SrcAssetDir2 = "D:\DragaliaLost Assets\EU_locale_2"
 
 
 function Write-Title {
@@ -96,8 +97,10 @@ function Build-Locale {
     Move-Item $masterTmpPath $masterOutputPath -Force
 
     $manifestSourcePath = Join-Path $pwd "source" $platformLower $manifestName
-    $manifestOutputPath = Join-Path $outputDir $manifestName
+    $manifestOutputDir = Join-Path $outputDir "manifests"
+    $manifestOutputPath = Join-Path $manifestOutputDir $manifestName
 
+    New-Item -Path $manifestOutputDir -ItemType Directory -Force | Out-Null
     Invoke-ModTools "manifest" "edit-master" $manifestSourcePath $masterOutputPath $manifestOutputPath
 }
 
@@ -110,17 +113,18 @@ function Merge-Manifest {
     $manifestName = Get-ManifestName $Locale
     $outputDir = Get-OutputDir $Platform
 
-    $inputManifest = Join-Path $outputDir $manifestName
-    $outputManifest = Join-Path $ManifestToMerge $manifestName
+    $targetManifest = Join-Path $outputDir "manifests" $manifestName
+    $sourceManifest = Join-Path $ManifestToMerge $manifestName
+
+    $outputManifestDir = Join-Path $outputDir "manifests"
+    $outputAssetDir = Join-Path $outputDir "assets"
 
     if ($Platform -eq "iOS") {
-        Invoke-Modtools "manifest" "merge" $inputManifest $outputManifest $SrcAssetDir $outputDir "--convert"
+        Invoke-Modtools "manifest" "merge" $targetManifest $sourceManifest $outputManifestDir $outputAssetDir "--convert"  "--assetDirectory" $SrcAssetDir "--assetDirectory" $SrcAssetDir2
     }
     else {
-        Invoke-Modtools "manifest" "merge" $inputManifest $outputManifest $SrcAssetDir $outputDir
+        Invoke-Modtools "manifest" "merge" $targetManifest $sourceManifest $outputManifestDir $outputAssetDir "--assetDirectory" $SrcAssetDir "--assetDirectory" $SrcAssetDir2
     }
-
-    
 }
 
 foreach ($locale in $Locales) {
