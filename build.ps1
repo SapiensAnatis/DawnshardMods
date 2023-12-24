@@ -111,7 +111,7 @@ function Merge-Manifest {
     )
 
     $manifestName = Get-ManifestName $Locale
-    $outputDir = Get-OutputDir $Platform
+    $outputDir = Get-OutputDir $Platform.ToLower()
 
     $targetManifest = Join-Path $outputDir "manifests" $manifestName
     $sourceManifest = Join-Path $ManifestToMerge $manifestName
