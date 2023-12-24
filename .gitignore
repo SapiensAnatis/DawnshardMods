@@ -3,3 +3,4 @@
 test/
 build/
 archive/
+*.local.ps1

@@ -1,16 +1,5 @@
-# General build options
-$ModToolsPath = "D:\Documents\Programming\dragalia\DragaliaModTools\ModTools\bin\Release\net6.0\ModTools.exe"
-$Locales = "ja_jp", "en_us", "en_eu", "zh_cn", "zh_tw"
-#$Locales = "zh_cn", "zh_tw"
-#$Locales = "ja_jp", "en_us"
-#$Locales = "en_us"
-$Platforms = "iOS", "Android"
-
-# Merge options
-$ManifestToMerge = "D:\DragaliaLost Assets\EU_locale\manifest\h6lObp9eiVabAdyO"
-$SrcAssetDir = "D:\DragaliaLost Assets\EU_locale"
-$SrcAssetDir2 = "D:\DragaliaLost Assets\EU_locale_2"
-
+. ./build_options.ps1
+. ./build_options.local.ps1
 
 function Write-Title {
     param (
