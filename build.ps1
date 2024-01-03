@@ -116,6 +116,8 @@ function Merge-Manifest {
     }
 }
 
+$stopwatch = [system.diagnostics.stopwatch]::StartNew()
+
 foreach ($locale in $Locales) {
     foreach ($platform in $Platforms) {
         Write-Title "Starting build for $locale / $platform"
@@ -128,3 +130,7 @@ foreach ($locale in $Locales) {
         Write-Title "Build complete"
     }
 }
+
+$elapsed = $stopwatch.Elapsed.TotalSeconds
+
+Write-Host "Build complete in $elapsed seconds."
