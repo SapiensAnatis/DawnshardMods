@@ -1,9 +1,12 @@
 . ./build_options.ps1
 . ./build_options.local.ps1
 
+$OutputHashes = [ordered]@{}
+
 function Write-Title {
     param (
-        [string] $Message
+        [string] $Message,
+        [System.ConsoleColor] $Color = 'Green'
     )
 
     $desiredLength = 80
@@ -12,7 +15,7 @@ function Write-Title {
     $firstHalf = "$('=' * $sideLength) $Message "
     $secondHalf = "$('=' * ($desiredLength - $firstHalf.Length))"
 
-    Write-Host "${firstHalf}${secondHalf}" -ForegroundColor Green
+    Write-Host "${firstHalf}${secondHalf}" -ForegroundColor $Color
 }
 
 function Get-ManifestName {
@@ -74,6 +77,10 @@ function Build-Locale {
 
     Invoke-ModTools import-multiple $masterSourcePath $dictionaryDir $masterTmpPath
 
+    if ($BannerConfig) {
+        Invoke-ModTools banner $BannerConfig --source $masterTmpPath --output $masterTmpPath
+    }
+
     $textLabelPath = Join-Path $pwd "textlabel" "${Locale}.json"
 
     Invoke-ModTools "import" $masterTmpPath "TextLabel" $textLabelPath "--inplace"
@@ -91,6 +98,8 @@ function Build-Locale {
 
     New-Item -Path $manifestOutputDir -ItemType Directory -Force | Out-Null
     Invoke-ModTools "manifest" "edit-master" $manifestSourcePath $masterOutputPath $manifestOutputPath
+
+    $OutputHashes["${Platform}_${Locale}"] = $hash
 }
 
 function Merge-Manifest {
@@ -116,13 +125,14 @@ function Merge-Manifest {
     }
 }
 
-$stopwatch = [system.diagnostics.stopwatch]::StartNew()
+$stopwatch = [System.Diagnostics.Stopwatch]::StartNew()
 
 foreach ($locale in $Locales) {
     foreach ($platform in $Platforms) {
         Write-Title "Starting build for $locale / $platform"
 
         Build-Locale $locale $platform
+
         if ($ManifestToMerge) {
             Merge-Manifest $locale $platform
         }
@@ -133,4 +143,7 @@ foreach ($locale in $Locales) {
 
 $elapsed = $stopwatch.Elapsed.TotalSeconds
 
-Write-Host "Build complete in $elapsed seconds."
+Write-Title "All builds complete" -Color Magenta
+Write-Host "Total build time: $elapsed seconds."
+Write-Host "New master hashes:"
+$OutputHashes

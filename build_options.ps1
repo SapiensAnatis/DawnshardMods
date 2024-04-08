@@ -7,3 +7,6 @@ $Platforms = "Android", "iOS"
 $ManifestToMerge = "/home/jay/Documents/Dragalia/RawManifests/Android/h6lObp9eiVabAdyO"
 $SrcAssetDir = "/home/jay/Documents/Dragalia/Assets/"
 $SrcAssetDir2 = "/home/jay/Documents/Dragalia/Assets/"
+
+# Banner options
+$BannerConfig = "C:\Users\jay0\DragaliaAPI\DragaliaAPI\DragaliaAPI\Resources\bannerConfig.json"
