@@ -1,0 +1,527 @@
+{
+    "SummonBannerOptions": {
+        "Banners": [
+            {
+                "Id": 1020183,
+                "Start": "2024-02-24T15:22:06Z",
+                "End": "2025-02-24T15:22:06Z",
+                "IsGala": true,
+                "IsPrizeShowcase": false,
+                "PickupCharas": [
+                    "Sheila",
+                    "GalaMascula",
+                    "BondforgedPrince",
+                    "BondforgedZethia",
+                    "GalaAlex"
+                ],
+                "PickupDragons": [],
+                "LimitedCharas": [],
+                "LimitedDragons": [],
+                "TradeCharas": [
+                    "GalaRanzal",
+                    "GalaLeif",
+                    "GalaPrince",
+                    "GalaAlex",
+                    "GalaNedrick",
+                    "GalaMascula",
+                    "GalaLuca",
+                    "GalaZethia",
+                    "GalaLaxi",
+                    "GalaNotte",
+                    "GalaGatov",
+                    "GalaElisanne",
+                    "GalaAudric",
+                    "GalaMym",
+                    "GalaSarisse",
+                    "GalaEmile",
+                    "GalaCleo",
+                    "GalaZena",
+                    "GalaLeonidas",
+                    "GalaChelle",
+                    "Naveed",
+                    "Lea",
+                    "UndercoverGrace",
+                    "Xander",
+                    "SummerCelliera",
+                    "Eugene",
+                    "WeddingElisanne",
+                    "Nino",
+                    "BondforgedPrince",
+                    "Albert",
+                    "Pecorine",
+                    "CivilianLeif",
+                    "Yaten",
+                    "Alberius",
+                    "Mikoto",
+                    "Rena",
+                    "ArmoredYachiyo",
+                    "Valerio",
+                    "Regina",
+                    "Victor",
+                    "Tobias",
+                    "ForagerMitsuba",
+                    "YukataLathna",
+                    "BeauticianZardin",
+                    "HumanoidJupiter",
+                    "Natalie",
+                    "Linnea",
+                    "Ezelith",
+                    "Sheila",
+                    "Mitsuba",
+                    "HumanoidMercury",
+                    "WeddingAoi",
+                    "SummerNorwin",
+                    "YukataCurran",
+                    "Farren",
+                    "Delphi",
+                    "Bellina",
+                    "Nevin",
+                    "Ramona",
+                    "ChildRanzal",
+                    "SummerJulietta",
+                    "Lazry",
+                    "Finni",
+                    "LinYou",
+                    "KimonoLuca",
+                    "Julietta",
+                    "ZhuBajie",
+                    "Valyx",
+                    "Curran",
+                    "SummerPatia",
+                    "Nadine",
+                    "KimonoElisanne",
+                    "Xainfried",
+                    "Catherine",
+                    "FaeblessedTobias",
+                    "Sylas",
+                    "Kirsty",
+                    "Grimnir",
+                    "Phares",
+                    "Annelie",
+                    "Ryszarda",
+                    "Forte",
+                    "Lathna",
+                    "SummerLeonidas",
+                    "Chelsea",
+                    "SummerAlex",
+                    "Laranoa",
+                    "Pinon",
+                    "HousekeeperPia",
+                    "Louise",
+                    "Hawk",
+                    "Meene",
+                    "SummerCleo",
+                    "SummerMikoto",
+                    "Isaac",
+                    "Nefaria",
+                    "OperaKarina",
+                    "StudentMaribelle",
+                    "IncognitoNefaria",
+                    "YukataCleo",
+                    "Lily",
+                    "Yurius",
+                    "Maribelle",
+                    "SummerSinoa",
+                    "Myriam",
+                    "Basileus",
+                    "Lucretia",
+                    "RadiantXuanZang",
+                    "SummerChelle",
+                    "BondforgedZethia",
+                    "Cassandra",
+                    "Vania",
+                    "ValentinesHildegarde",
+                    "YukataCassandra",
+                    "AyahaampOtoha",
+                    "JiangZiya",
+                    "Sandalphon",
+                    "Akasha",
+                    "FormalNoelle",
+                    "Nina",
+                    "Hildegarde",
+                    "KimonoNotte",
+                    "Heinwald",
+                    "SummerVerica",
+                    "Grace",
+                    "Faris",
+                    "Lapis",
+                    "SharpshooterSarisse",
+                    "FormalJoachim",
+                    "Saiga",
+                    "Cecile",
+                    "Ilia",
+                    "Eirene",
+                    "SummerMym",
+                    "HumanoidZodiark"
+                ],
+                "TradeDragons": []
+            },
+            {
+                "Id": 1020115,
+                "Start": "2024-02-24T15:22:06Z",
+                "End": "2025-02-24T15:22:06Z",
+                "IsGala": true,
+                "IsPrizeShowcase": false,
+                "PickupCharas": [],
+                "PickupDragons": [
+                    "GalaRebornAgni",
+                    "GalaBeastCiella",
+                    "GalaRebornZephyr",
+                    "GalaChronosNyx",
+                    "GalaBahamut"
+                ],
+                "LimitedCharas": [],
+                "LimitedDragons": [],
+                "TradeCharas": [],
+                "TradeDragons": [
+                    "GalaMars",
+                    "GalaRebornAgni",
+                    "GalaRebornPoseidon",
+                    "GalaBeastCiella",
+                    "GalaRebornZephyr",
+                    "GalaBeastVolk",
+                    "GalaThor",
+                    "GalaRebornJeanne",
+                    "GalaChronosNyx",
+                    "GalaElysium",
+                    "GalaCatSith",
+                    "GalaRebornNidhogg",
+                    "GalaBahamut",
+                    "Agni",
+                    "Cerberus",
+                    "Prometheus",
+                    "KonohanaSakuya",
+                    "Arctos",
+                    "Apollo",
+                    "Kagutsuchi",
+                    "Horus",
+                    "Uriel",
+                    "PrimalBrunhilda",
+                    "Poseidon",
+                    "Leviathan",
+                    "Siren",
+                    "Simurgh",
+                    "Kamuy",
+                    "Nimis",
+                    "GaibhneCreidhne",
+                    "Styx",
+                    "Gabriel",
+                    "Zephyr",
+                    "Garuda",
+                    "LongLong",
+                    "Pazuzu",
+                    "Freyja",
+                    "Vayu",
+                    "Hastur",
+                    "AC011Garland",
+                    "Ariel",
+                    "SummerKonohanaSakuya",
+                    "MidgardsormrZero",
+                    "Menoetius",
+                    "RoseQueen",
+                    "Michael",
+                    "JeannedArc",
+                    "CorsaintPhoenix",
+                    "Gilgamesh",
+                    "Cupid",
+                    "Liger",
+                    "Takemikazuchi",
+                    "PopStarSiren",
+                    "TieShanGongzhu",
+                    "LumierePandora",
+                    "Raphael",
+                    "SummerCatSith",
+                    "Nidhogg",
+                    "Nyarlathotep",
+                    "Shinobi",
+                    "Chthonius",
+                    "Epimetheus",
+                    "Andromeda",
+                    "Azazel",
+                    "Ramiel",
+                    "Giovanni",
+                    "HighChthonius"
+                ]
+            },
+            {
+                "Id": 1020193,
+                "Start": "2024-02-24T15:22:06Z",
+                "End": "2025-02-24T15:22:06Z",
+                "IsGala": true,
+                "IsPrizeShowcase": false,
+                "PickupCharas": [
+                    "DragonyuleIlia",
+                    "DragonyuleLily",
+                    "DragonyuleXainfried"
+                ],
+                "PickupDragons": [
+                    "DragonyuleJeanne"
+                ],
+                "LimitedCharas": [
+                    "DragonyuleCleo",
+                    "DragonyuleVictor",
+                    "DragonyuleNefaria",
+                    "DragonyuleXander",
+                    "DragonyuleNevin",
+                    "DragonyuleMalora"
+                ],
+                "LimitedDragons": [
+                    "DragonyuleJeanne"
+                ],
+                "TradeCharas": [
+                    "DragonyuleIlia",
+                    "DragonyuleLily",
+                    "DragonyuleCleo",
+                    "DragonyuleXainfried",
+                    "DragonyuleVictor",
+                    "DragonyuleNefaria",
+                    "DragonyuleXander",
+                    "DragonyuleNevin",
+                    "DragonyuleMalora"
+                ],
+                "TradeDragons": [
+                    "DragonyuleJeanne"
+                ]
+            },
+            {
+                "Id": 1020197,
+                "Start": "2024-02-24T15:22:06Z",
+                "End": "2025-02-24T15:22:06Z",
+                "IsGala": true,
+                "IsPrizeShowcase": false,
+                "PickupCharas": [
+                    "Nobunaga",
+                    "Yukimura",
+                    "Shingen",
+                    "Mitsuhide"
+                ],
+                "PickupDragons": [
+                    "GozuTenno",
+                    "FudoMyoo"
+                ],
+                "LimitedCharas": [
+                    "Addis",
+                    "Ieyasu",
+                    "Sazanka",
+                    "Chitose",
+                    "Seimei",
+                    "Yoshitsune"
+                ],
+                "LimitedDragons": [
+                    "Daikokuten",
+                    "Marishiten"
+                ],
+                "TradeCharas": [
+                    "Nobunaga",
+                    "Yukimura",
+                    "Shingen",
+                    "Mitsuhide",
+                    "Addis",
+                    "Ieyasu",
+                    "Sazanka",
+                    "Chitose",
+                    "Seimei",
+                    "Yoshitsune"
+                ],
+                "TradeDragons": [
+                    "GozuTenno",
+                    "FudoMyoo",
+                    "Daikokuten",
+                    "Marishiten"
+                ]
+            },
+            {
+                "Id": 1020123,
+                "Start": "2024-02-24T15:22:06Z",
+                "End": "2025-02-24T15:22:06Z",
+                "IsGala": true,
+                "IsPrizeShowcase": false,
+                "PickupCharas": [
+                    "GalaRanzal",
+                    "ValentinesChelsea",
+                    "ValentinesMelody",
+                    "ValentinesAddis"
+                ],
+                "PickupDragons": [
+                    "Menoetius"
+                ],
+                "LimitedCharas": [],
+                "LimitedDragons": [],
+                "TradeCharas": [
+                    "GalaRanzal",
+                    "ValentinesChelsea",
+                    "ValentinesMelody",
+                    "ValentinesAddis",
+                    "ValentinesOrion",
+                    "ValentinesEzelith",
+                    "ValentinesHildegarde"
+                ],
+                "TradeDragons": [
+                    "Menoetius"
+                ]
+            },
+            {
+                "Id": 1020147,
+                "Start": "2024-02-24T15:22:06Z",
+                "End": "2025-02-24T15:22:06Z",
+                "IsGala": true,
+                "IsPrizeShowcase": false,
+                "PickupCharas": [
+                    "SummerMitsuhide",
+                    "GalaLeonidas",
+                    "SummerIeyasu"
+                ],
+                "PickupDragons": [
+                    "SummerMarishiten"
+                ],
+                "LimitedCharas": [],
+                "LimitedDragons": [],
+                "TradeCharas": [
+                    "SummerMitsuhide",
+                    "GalaLeonidas",
+                    "SummerIeyasu",
+                    "SummerAlex",
+                    "SummerIeyasu",
+                    "SummerCelliera",
+                    "SummerRanzal",
+                    "SummerJulietta",
+                    "SummerNorwin",
+                    "SummerSinoa",
+                    "SummerMikoto",
+                    "SummerCleo",
+                    "SummerChelle",
+                    "SummerPatia",
+                    "SummerLeonidas",
+                    "SummerVerica",
+                    "SummerMym"
+                ],
+                "TradeDragons": [
+                    "SummerMarishiten",
+                    "SummerKonohanaSakuya",
+                    "PopStarSiren"
+                ]
+            },
+            {
+                "Id": 1020189,
+                "Start": "2024-02-24T15:22:06Z",
+                "End": "2025-02-24T15:22:06Z",
+                "IsGala": true,
+                "IsPrizeShowcase": false,
+                "PickupCharas": [
+                    "HalloweenAkasha",
+                    "HalloweenLaxi",
+                    "HalloweenSylas",
+                    "HalloweenMym",
+                    "HalloweenLowen"
+                ],
+                "PickupDragons": [],
+                "LimitedCharas": [
+                    "HalloweenEdward",
+                    "HalloweenElisanne",
+                    "HalloweenAlthemia",
+                    "HalloweenOdetta",
+                    "HalloweenMelsa"
+                ],
+                "LimitedDragons": [
+                    "HalloweenMaritimus",
+                    "HalloweenSilke"
+                ],
+                "TradeCharas": [
+                    "HalloweenAkasha",
+                    "HalloweenLaxi",
+                    "HalloweenSylas",
+                    "HalloweenMym",
+                    "HalloweenLowen",
+                    "HalloweenEdward",
+                    "HalloweenElisanne",
+                    "HalloweenAlthemia",
+                    "HalloweenOdetta",
+                    "HalloweenMelsa"
+                ],
+                "TradeDragons": [
+                    "HalloweenMaritimus",
+                    "HalloweenSilke"
+                ]
+            },
+            {
+                "Id": 1020121,
+                "Start": "2024-02-24T15:22:06Z",
+                "End": "2025-02-24T15:22:06Z",
+                "IsGala": false,
+                "IsPrizeShowcase": false,
+                "PickupCharas": [
+                    "Joker",
+                    "Panther",
+                    "Mona"
+                ],
+                "PickupDragons": [
+                    "Arsene"
+                ],
+                "LimitedCharas": [],
+                "LimitedDragons": [],
+                "TradeCharas": [
+                    "Joker",
+                    "Panther",
+                    "Mona"
+                ],
+                "TradeDragons": [
+                    "Arsene"
+                ]
+            },
+            {
+                "Id": 1020074,
+                "Start": "2024-02-24T15:22:06Z",
+                "End": "2025-02-24T15:22:06Z",
+                "IsGala": false,
+                "IsPrizeShowcase": false,
+                "PickupCharas": [
+                    "Marth",
+                    "Tiki",
+                    "Chrom",
+                    "Fjorm",
+                    "Peony",
+                    "Veronica"
+                ],
+                "PickupDragons": [],
+                "LimitedCharas": [],
+                "LimitedDragons": [],
+                "TradeCharas": [
+                    "Marth",
+                    "Tiki",
+                    "Chrom",
+                    "Fjorm",
+                    "Peony",
+                    "Veronica"
+                ],
+                "TradeDragons": []
+            },
+            {
+                "Id": 1020055,
+                "Start": "2024-02-24T15:22:06Z",
+                "End": "2025-02-24T15:22:06Z",
+                "IsGala": false,
+                "IsPrizeShowcase": false,
+                "PickupCharas": [
+                    "HunterBerserker",
+                    "HunterVanessa",
+                    "HunterSarisse"
+                ],
+                "PickupDragons": [
+                    "DreadkingRathalos",
+                    "Fatalis"
+                ],
+                "LimitedCharas": [],
+                "LimitedDragons": [],
+                "TradeCharas": [
+                    "HunterBerserker",
+                    "HunterVanessa",
+                    "HunterSarisse"
+                ],
+                "TradeDragons": [
+                    "DreadkingRathalos",
+                    "Fatalis"
+                ]
+            }
+        ]
+    }
+}

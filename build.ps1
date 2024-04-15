@@ -1,6 +1,9 @@
 . ./build_options.ps1
 . ./build_options.local.ps1
 
+$buildPath = Join-Path $pwd "build"
+Remove-Item $buildPath -Force -Recurse
+
 $OutputHashes = [ordered]@{}
 
 function Write-Title {
