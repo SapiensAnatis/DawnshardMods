@@ -78,15 +78,15 @@ function Build-Locale {
     $dictionaryDir = Join-Path $pwd "dictionaries"
     $masterTmpPath = Join-Path $outputDir $masterFileName
 
-    Invoke-ModTools import-multiple $masterSourcePath $dictionaryDir $masterTmpPath
+    Invoke-ModTools import-multiple $masterSourcePath --directory $dictionaryDir --output $masterTmpPath
 
     if ($BannerConfig) {
-        Invoke-ModTools banner $BannerConfig --source $masterTmpPath --output $masterTmpPath
+        Invoke-ModTools banner $BannerConfig --master $masterTmpPath --output $masterTmpPath
     }
 
     $textLabelPath = Join-Path $pwd "textlabel" "${Locale}.json"
 
-    Invoke-ModTools "import" $masterTmpPath "TextLabel" $textLabelPath "--inplace"
+    Invoke-ModTools "import" $masterTmpPath --asset "TextLabel" --dictionary $textLabelPath "--inplace"
 
     $hash = $(Invoke-ModTools "hash" $masterTmpPath)
     $masterOutputDir = Join-Path $outputDir "assets" "$hash".Substring(0, 2)
@@ -100,7 +100,7 @@ function Build-Locale {
     $manifestOutputPath = Join-Path $manifestOutputDir $manifestName
 
     New-Item -Path $manifestOutputDir -ItemType Directory -Force | Out-Null
-    Invoke-ModTools "manifest" "edit-master" $manifestSourcePath $masterOutputPath $manifestOutputPath
+    Invoke-ModTools "manifest" "edit-master" $manifestSourcePath --master $masterOutputPath --output $manifestOutputPath
 
     $OutputHashes["${Platform}_${Locale}"] = $hash
 }
@@ -120,12 +120,13 @@ function Merge-Manifest {
     $outputManifestDir = Join-Path $outputDir "manifests"
     $outputAssetDir = Join-Path $outputDir "assets"
 
+    $mergeArgs = @("manifest", "merge", "--target", $targetManifest, "--source", $sourceManifest, "--output-manifests", $outputManifestDir, "--output-bundles", $outputAssetDir,  "--assets-path", "$SrcAssetDir,$SrcAssetDir2")
+    
     if ($Platform -eq "iOS") {
-        Invoke-Modtools "manifest" "merge" $targetManifest $sourceManifest $outputManifestDir $outputAssetDir "--convert"  "--assetDirectory" $SrcAssetDir "--assetDirectory" $SrcAssetDir2
+        $mergeArgs += "--convert"
     }
-    else {
-        Invoke-Modtools "manifest" "merge" $targetManifest $sourceManifest $outputManifestDir $outputAssetDir "--assetDirectory" $SrcAssetDir "--assetDirectory" $SrcAssetDir2
-    }
+    
+    Invoke-ModTools $mergeArgs
 }
 
 $stopwatch = [System.Diagnostics.Stopwatch]::StartNew()
