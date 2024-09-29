@@ -1,5 +1,5 @@
-. ./build_options.ps1
-. ./build_options.local.ps1
+. ./options.ps1
+. ./options.local.ps1
 
 $buildPath = Join-Path $pwd "build"
 Remove-Item $buildPath -Force -Recurse
@@ -45,6 +45,19 @@ function Get-OutputDir {
     $dir.FullName
 }
 
+function Get-BundleOutputPath {
+    param (
+        [string] $BundlePath
+    )
+
+    $hash = Invoke-ModTools "hash" $BundlePath
+    $outputDir = Join-Path $outputDir "assets" "$hash".Substring(0, 2)
+    New-Item -Path $outputDir -ItemType Directory -Force | Out-Null
+    $outputPath = Join-Path $outputDir $hash
+
+    $outputPath
+}
+
 function Invoke-ModTools {
     [CmdletBinding()]
     param (
@@ -59,6 +72,49 @@ function Invoke-ModTools {
     if ($LASTEXITCODE) {
         Write-Error "ModTools invocation failed with exit code $LASTEXITCODE"
         exit 1
+    }
+}
+
+function Merge-Manifest {
+    param (
+        [string] $Locale,
+        [string] $Platform
+    )
+
+    $manifestName = Get-ManifestName $Locale
+    $outputDir = Get-OutputDir $Platform.ToLower()
+
+    $targetManifest = Join-Path $outputDir "manifests" $manifestName
+    $sourceManifest = Join-Path $ManifestToMerge $manifestName
+
+    $outputManifestDir = Join-Path $outputDir "manifests"
+    $outputAssetDir = Join-Path $outputDir "assets"
+
+    $mergeArgs = @("manifest", "merge", "--target", $targetManifest, "--source", $sourceManifest, "--output-manifests", $outputManifestDir, "--output-bundles", $outputAssetDir,  "--assets-path", "$SrcAssetDir,$SrcAssetDir2")
+    
+    if ($Platform -eq "iOS") {
+        $mergeArgs += "--convert"
+    }
+    
+    Invoke-ModTools $mergeArgs
+}
+
+function Add-Bundles {
+    param (
+        [string] $Platform
+    )
+
+    $manifestName = Get-ManifestName "ja_jp" # We don't need to add localized bundles... yet
+    $outputDir = Get-OutputDir $Platform.ToLower()
+    $manifestPath = Join-Path $outputDir "manifests" $manifestName
+
+    $bundlesDir = Join-Path "additionalBundles" $Platform.ToLower()
+
+    Invoke-ModTools manifest add-bundles $manifestPath --bundles $bundlesDir --output $manifestPath
+
+    foreach ($bundle in Get-ChildItem $bundlesDir) {
+        $outputPath = Get-BundleOutputPath $bundle
+        Copy-Item $bundle $outputPath -Force
     }
 }
 
@@ -88,11 +144,7 @@ function Build-Locale {
 
     Invoke-ModTools "import" $masterTmpPath --asset "TextLabel" --dictionary $textLabelPath "--inplace"
 
-    $hash = $(Invoke-ModTools "hash" $masterTmpPath)
-    $masterOutputDir = Join-Path $outputDir "assets" "$hash".Substring(0, 2)
-    $masterOutputPath = Join-Path $masterOutputDir $hash
-
-    New-Item -Path $masterOutputDir -ItemType Directory -Force | Out-Null
+    $masterOutputPath = Get-BundleOutputPath $masterTmpPath
     Move-Item $masterTmpPath $masterOutputPath -Force
 
     $manifestSourcePath = Join-Path $pwd "source" $platformLower $manifestName
@@ -102,31 +154,11 @@ function Build-Locale {
     New-Item -Path $manifestOutputDir -ItemType Directory -Force | Out-Null
     Invoke-ModTools "manifest" "edit-master" $manifestSourcePath --master $masterOutputPath --output $manifestOutputPath
 
-    $OutputHashes["${Platform}_${Locale}"] = $hash
-}
-
-function Merge-Manifest {
-    param (
-        [string] $Locale,
-        [string] $Platform
-    )
-
-    $manifestName = Get-ManifestName $Locale
-    $outputDir = Get-OutputDir $Platform.ToLower()
-
-    $targetManifest = Join-Path $outputDir "manifests" $manifestName
-    $sourceManifest = Join-Path $ManifestToMerge $manifestName
-
-    $outputManifestDir = Join-Path $outputDir "manifests"
-    $outputAssetDir = Join-Path $outputDir "assets"
-
-    $mergeArgs = @("manifest", "merge", "--target", $targetManifest, "--source", $sourceManifest, "--output-manifests", $outputManifestDir, "--output-bundles", $outputAssetDir,  "--assets-path", "$SrcAssetDir,$SrcAssetDir2")
-    
-    if ($Platform -eq "iOS") {
-        $mergeArgs += "--convert"
+    if ($Locale -eq "ja_jp") {
+        Add-Bundles $Platform
     }
-    
-    Invoke-ModTools $mergeArgs
+
+    $OutputHashes["${Platform}_${Locale}"] = [System.IO.Path]::GetFileName($masterOutputPath)
 }
 
 $stopwatch = [System.Diagnostics.Stopwatch]::StartNew()

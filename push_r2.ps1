@@ -1,10 +1,11 @@
-. ./push_r2_options.ps1
-. ./push_r2_options.local.ps1
+. ./options.ps1
+. ./options.local.ps1
 
 $BuildDir = Join-Path $pwd "build"
 
 foreach ($platform in $Platforms) {
     $manifestName = Read-Host "What should the new manifest for '$platform' be called?"
+    $platform = $platform.ToLower()
     
     $assetDir = Join-Path $BuildDir $platform "assets"
     $manifestDir = Join-Path $BuildDir $platform "manifests"
