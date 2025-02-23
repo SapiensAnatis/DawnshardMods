@@ -1,10 +1,11 @@
 {
+    "$schema": "./dawnshard-bannerConfig.schema.json",
     "SummonBannerOptions": {
         "Banners": [
             {
                 "Id": 1020183,
                 "Start": "2024-02-24T15:22:06Z",
-                "End": "2025-02-24T15:22:06Z",
+                "End": "2038-01-19T03:14:06Z",
                 "IsGala": true,
                 "IsPrizeShowcase": false,
                 "PickupCharas": [
@@ -159,7 +160,7 @@
             {
                 "Id": 1020115,
                 "Start": "2024-02-24T15:22:06Z",
-                "End": "2025-02-24T15:22:06Z",
+                "End": "2038-01-19T03:14:06Z",
                 "IsGala": true,
                 "IsPrizeShowcase": false,
                 "PickupCharas": [],
@@ -246,13 +247,14 @@
             {
                 "Id": 1020193,
                 "Start": "2024-02-24T15:22:06Z",
-                "End": "2025-02-24T15:22:06Z",
+                "End": "2038-01-19T03:14:06Z",
                 "IsGala": true,
                 "IsPrizeShowcase": false,
                 "PickupCharas": [
                     "DragonyuleIlia",
                     "DragonyuleLily",
-                    "DragonyuleXainfried"
+                    "DragonyuleXainfried",
+                    "DragonyuleNefaria"
                 ],
                 "PickupDragons": [
                     "DragonyuleJeanne"
@@ -286,14 +288,16 @@
             {
                 "Id": 1020197,
                 "Start": "2024-02-24T15:22:06Z",
-                "End": "2025-02-24T15:22:06Z",
+                "End": "2038-01-19T03:14:06Z",
                 "IsGala": true,
                 "IsPrizeShowcase": false,
                 "PickupCharas": [
                     "Nobunaga",
                     "Yukimura",
                     "Shingen",
-                    "Mitsuhide"
+                    "Mitsuhide",
+                    "Sazanka",
+                    "Addis"
                 ],
                 "PickupDragons": [
                     "GozuTenno",
@@ -333,7 +337,7 @@
             {
                 "Id": 1020123,
                 "Start": "2024-02-24T15:22:06Z",
-                "End": "2025-02-24T15:22:06Z",
+                "End": "2038-01-19T03:14:06Z",
                 "IsGala": true,
                 "IsPrizeShowcase": false,
                 "PickupCharas": [
@@ -363,7 +367,7 @@
             {
                 "Id": 1020147,
                 "Start": "2024-02-24T15:22:06Z",
-                "End": "2025-02-24T15:22:06Z",
+                "End": "2038-01-19T03:14:06Z",
                 "IsGala": true,
                 "IsPrizeShowcase": false,
                 "PickupCharas": [
@@ -379,7 +383,6 @@
                 "TradeCharas": [
                     "SummerMitsuhide",
                     "GalaLeonidas",
-                    "SummerIeyasu",
                     "SummerAlex",
                     "SummerIeyasu",
                     "SummerCelliera",
@@ -404,7 +407,7 @@
             {
                 "Id": 1020189,
                 "Start": "2024-02-24T15:22:06Z",
-                "End": "2025-02-24T15:22:06Z",
+                "End": "2038-01-19T03:14:06Z",
                 "IsGala": true,
                 "IsPrizeShowcase": false,
                 "PickupCharas": [
@@ -446,7 +449,7 @@
             {
                 "Id": 1020121,
                 "Start": "2024-02-24T15:22:06Z",
-                "End": "2025-02-24T15:22:06Z",
+                "End": "2038-01-19T03:14:06Z",
                 "IsGala": false,
                 "IsPrizeShowcase": false,
                 "PickupCharas": [
@@ -471,7 +474,7 @@
             {
                 "Id": 1020074,
                 "Start": "2024-02-24T15:22:06Z",
-                "End": "2025-02-24T15:22:06Z",
+                "End": "2038-01-19T03:14:06Z",
                 "IsGala": false,
                 "IsPrizeShowcase": false,
                 "PickupCharas": [
@@ -498,7 +501,7 @@
             {
                 "Id": 1020055,
                 "Start": "2024-02-24T15:22:06Z",
-                "End": "2025-02-24T15:22:06Z",
+                "End": "2038-01-19T03:14:06Z",
                 "IsGala": false,
                 "IsPrizeShowcase": false,
                 "PickupCharas": [
