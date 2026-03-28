@@ -2,7 +2,10 @@
 . ./options.local.ps1
 
 $buildPath = Join-Path $pwd "build"
-Remove-Item $buildPath -Force -Recurse
+
+if (Test-Path $buildPath) {
+    Remove-Item $buildPath -Force -Recurse
+}
 
 $OutputHashes = [ordered]@{}
 
@@ -75,28 +78,35 @@ function Invoke-ModTools {
     }
 }
 
-function Merge-Manifest {
+function Add-EventAssets {
     param (
         [string] $Locale,
         [string] $Platform
     )
-
+    
     $manifestName = Get-ManifestName $Locale
     $outputDir = Get-OutputDir $Platform.ToLower()
 
     $targetManifest = Join-Path $outputDir "manifests" $manifestName
-    $sourceManifest = Join-Path $ManifestToMerge $manifestName
 
     $outputManifestDir = Join-Path $outputDir "manifests"
     $outputAssetDir = Join-Path $outputDir "assets"
 
-    $mergeArgs = @("manifest", "merge", "--target", $targetManifest, "--source", $sourceManifest, "--output-manifests", $outputManifestDir, "--output-bundles", $outputAssetDir,  "--assets-path", "$SrcAssetDir,$SrcAssetDir2")
+    $args = @("manifest", "add-event-assets", 
+        "--target", $targetManifest, 
+        "--target-locale", $Locale,
+        "--event", $EventIdToAdd, 
+        "--output-manifest-dir", $outputManifestDir, 
+        "--output-bundle-dir", $outputAssetDir, 
+        "--assets-dir", $SrcAssetsDir,
+        "--parsed-manifests-dir", $ParsedManifestsDir
+    )
     
     if ($Platform -eq "iOS") {
-        $mergeArgs += "--convert"
+        $args += "--convert"
     }
     
-    Invoke-ModTools $mergeArgs
+    Invoke-ModTools $args
 }
 
 function Add-Bundles {
@@ -169,8 +179,8 @@ foreach ($locale in $Locales) {
 
         Build-Locale $locale $platform
 
-        if ($ManifestToMerge) {
-            Merge-Manifest $locale $platform
+        if ($EventIdToAdd) {
+            Add-EventAssets $locale $platform
         }
 
         Write-Title "Build complete"

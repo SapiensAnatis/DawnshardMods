@@ -1,12 +1,12 @@
-$LocalCdnBundlePath = "D:\DragaliaLost Assets\EU_locale"
-$LocalCdnManifestPath = "D:\DragaliaLost Assets\EU_locale\manifest"
+$LocalCdnBundlePath = "/home/jay/Projects/DawnshardMods/local_cdn/bundles"
+$LocalCdnManifestPath = "/home/jay/Projects/DawnshardMods/local_cdn/manifests"
 $Platforms = "Android", "iOS"
 
 $BuildDir = Join-Path $pwd "build"
 
 foreach ($platform in $Platforms) {
-    $assetDir = Join-Path $BuildDir $platform "assets"
-    $manifestDir = Join-Path $BuildDir $platform "manifests"
+    $assetDir = Join-Path $BuildDir $platform.ToLower() "assets"
+    $manifestDir = Join-Path $BuildDir $platform.ToLower() "manifests"
 
     if (-Not(Test-Path -Path $assetDir) || -Not(Test-Path -Path $manifestDir)) {
         Write-Host "Skipping platform ${platform}: build output not found"
